@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DAYPIVA.CODE</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/three@0.134.0/build/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="vanta-bg"></div>
+
+    <div class="container">
+        <header>
+            <h1>daypiva.code</h1>
+            <p class="subtitle">Мои проекты</p>
+            <div class="filter-bar">
+                <button class="filter-btn active" onclick="filterProjects('all')">Все проекты</button>
+                <button class="filter-btn" onclick="filterProjects('telegram.org')">Telegram</button>
+                <button class="filter-btn" onclick="filterProjects('discord.com')">Discord</button>
+                <button class="filter-btn" onclick="filterProjects('vk.com')">ВКонтакте</button>
+            </div>
+        </header>
+
+        <div class="projects-grid" id="projectsGrid"></div>
+    </div>
+
+    <div class="project-detail" id="projectDetail">
+        <div class="close-btn" onclick="closeProject()">✕</div>
+        <div class="detail-content" id="detailContent"></div>
+    </div>
+
+    <script src="js/projects.js"></script>
+    <script src="js/script.js"></script>
+
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            VANTA.NET({
+                el: "#vanta-bg",
+                mouseControls: false,
+                touchControls: false,
+                gyroControls: false,
+                minHeight: 200.00,
+                minWidth: 200.00,
+                scale: 1.00,
+                scaleMobile: 1.00,
+                color: 0x4a0e0e,
+                backgroundColor: 0x050505
+            });
+        });
+    </script>
+</body>
+</html>
