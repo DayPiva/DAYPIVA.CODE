@@ -166,4 +166,50 @@ function nextSlide() {
     goToSlide(currentSlideIndex < slides.length - 1 ? currentSlideIndex + 1 : 0);
 }
 
+function openNotification(name) {
+    const notification = document.getElementById('customNotification');
+    const notificationContent = document.getElementById('notificationContent');
+
+    const notifications = {
+        'telegram': {
+            title: 'Мой Telegram',
+            message: '<a href="https://t.me/vladtanashuk" target="_blank">[НАЖМИ НА МЕНЯ]</a>'
+        }
+    };
+
+    const notif = notifications[name] || {
+        title: 'Уведомление',
+        message: `Вы открыли уведомление: ${name}`
+    };
+
+    notificationContent.innerHTML = `
+        <h2>${notif.title}</h2>
+        <p>${notif.message}</p>
+    `;
+
+    notification.classList.add('active');
+}
+
+function closeNotification() {
+    document.getElementById('customNotification').classList.remove('active');
+    window.history.pushState(null, '', window.location.pathname);
+}
+
+function handleHashOnLoad() {
+    const hash = window.location.hash.slice(1);
+    if (hash) {
+        openNotification(hash);
+    }
+}
+
+window.addEventListener('hashchange', () => {
+    const hash = window.location.hash.slice(1);
+    if (hash) {
+        openNotification(hash);
+    } else {
+        closeNotification();
+    }
+});
+
 renderProjects();
+handleHashOnLoad();

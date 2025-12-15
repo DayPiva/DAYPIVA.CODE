@@ -20,6 +20,84 @@ body {
     overflow-x: hidden;
 }
 
+.custom-notification {
+    display: none;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    z-index: 2000;
+    backdrop-filter: blur(10px);
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 0.5s ease;
+}
+
+.custom-notification.active {
+    display: flex;
+}
+
+.notification-box {
+    background: rgba(20, 20, 20, 0.5);
+    border: 1px solid rgba(220, 35, 35, 0.5);
+    border-radius: 15px;
+    padding: 50px 50px;
+    max-width: 500px;
+    width: 90%;
+    position: relative;
+    animation: notificationPop 0.5s cubic-bezier(0.5, -0.5, 0.25, 1.5);
+    box-shadow: 0 0 50px 10px rgba(220, 35, 35, 0.2);
+}
+
+@keyframes notificationPop {
+    0% {
+        transform: scale(0.5) translateY(-100px);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1) translateY(0);
+        opacity: 1;
+    }
+}
+
+.notification-close {
+    user-select: none;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background: rgba(20, 20, 20, 0.5);
+    border: 1px solid rgba(220, 35, 35, 0.5);
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.5s;
+}
+
+.notification-close:hover {
+    background: rgba(220, 35, 35, 1);
+}
+
+#notificationContent h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #dc2626;
+    text-align: center;
+}
+
+#notificationContent p {
+    text-align: center;
+}
+
+#notificationContent a {
+    text-decoration: none;
+    color: #ccc;
+}
+
 .container {
     margin: 0 auto;
     padding: 0 40px;
@@ -281,6 +359,7 @@ h1 {
 }
 
 .close-btn {
+    user-select: none;
     position: fixed;
     top: 40px;
     right: 40px;
